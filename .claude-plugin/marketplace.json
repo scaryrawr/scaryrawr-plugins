@@ -40,6 +40,16 @@
           }
         }
       }
+    },
+    {
+      "name": "chrome-devtools",
+      "description": "Give your AI coding assistant access to the full power of Chrome DevTools for reliable automation, in-depth debugging, and performance analysis.",
+      "author": {
+        "name": "Google"
+      },
+      "source": "./external_plugins/devtools",
+      "category": "development",
+      "strict": false
     }
   ]
 }
