@@ -47,7 +47,7 @@
       "author": {
         "name": "Google"
       },
-      "source": "./external_plugins/devtools",
+      "source": "./external_plugins/chrome-devtools",
       "category": "development",
       "strict": false
     },
