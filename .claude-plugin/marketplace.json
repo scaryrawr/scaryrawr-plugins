@@ -60,6 +60,16 @@
       "source": "./external_plugins/playwright-ext",
       "category": "development",
       "strict": false
+    },
+    {
+      "name": "tmux",
+      "description": "Remote control tmux sessions for interactive CLIs (python, gdb, etc.) by sending keystrokes and scraping pane output.",
+      "author": {
+        "name": "Armin Ronacher"
+      },
+      "source": "./plugins/tmux",
+      "category": "development",
+      "strict": false
     }
   ]
 }
