@@ -39,6 +39,14 @@ az repos pr show --id {prId} --org {orgUrl}
 az repos pr checkout --id {prId}
 ```
 
+### Get PR File Changes
+
+Use `az devops invoke` to get the list of files and diffs:
+
+```shell
+az devops invoke --area git --resource pullRequests --route-parameters repositoryId={repo} pullRequestId={prId} --org {orgUrl} --api-version 7.1
+```
+
 ### Get PR Comment Threads
 
 The CLI lacks a first-class command for threads; use `az devops invoke`:
@@ -51,6 +59,37 @@ Filter to active/unresolved threads:
 
 ```shell
 ... | jq '.value[] | select(.status == "active")'
+```
+
+### Create PR Comment Thread
+
+General comment (not attached to a file):
+
+```shell
+az devops invoke --area git --resource pullRequestThreads \
+  --route-parameters project={project} repositoryId={repo} pullRequestId={pr} \
+  --http-method POST --api-version 7.1-preview --org {orgUrl} \
+  --body '{
+    "comments": [{"parentCommentId": 0, "content": "Your comment", "commentType": "text"}],
+    "status": "active"
+  }'
+```
+
+File-specific comment (attached to specific lines):
+
+```shell
+az devops invoke --area git --resource pullRequestThreads \
+  --route-parameters project={project} repositoryId={repo} pullRequestId={pr} \
+  --http-method POST --api-version 7.1-preview --org {orgUrl} \
+  --body '{
+    "comments": [{"parentCommentId": 0, "content": "Your comment", "commentType": "text"}],
+    "status": "active",
+    "threadContext": {
+      "filePath": "/path/to/file.js",
+      "rightFileStart": {"line": 10, "offset": 0},
+      "rightFileEnd": {"line": 15, "offset": 0}
+    }
+  }'
 ```
 
 ### Vote on a PR
