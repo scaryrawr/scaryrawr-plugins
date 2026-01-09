@@ -17,6 +17,8 @@ Extract parameters from common URL patterns:
 
 ## Pull Requests
 
+**Important**: Most `az repos pr` commands require the `--org {orgUrl}` parameter to identify the Azure DevOps organization. The exception is `az repos pr checkout`, which operates on the local git repository and does NOT require `--org`.
+
 Infer user intent from context when they share a PR link:
 
 | Context                          | Likely Action                             |
@@ -34,6 +36,8 @@ az repos pr show --id {prId} --org {orgUrl}
 ```
 
 ### Checkout PR Branch
+
+**Note**: This command does NOT require `--org` because it operates on the local git repository context.
 
 ```shell
 az repos pr checkout --id {prId}

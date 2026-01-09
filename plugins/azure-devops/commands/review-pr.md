@@ -7,11 +7,11 @@ Provide a code review for the given Azure DevOps pull request.
 
 ## Workflow
 
-1. **Check Eligibility**: Use `az repos pr show --id {prId}` to verify the PR is open, not a draft, and hasn't been reviewed by you already. Skip if ineligible.
+1. **Check Eligibility**: Use `az repos pr show --id {prId} --org {orgUrl}` to verify the PR is open, not a draft, and hasn't been reviewed by you already. Skip if ineligible.
 
 2. **Get Context**: Identify relevant CLAUDE.md files (root and in modified directories) and get the PR diff using git commands:
-   - First, use `az repos pr show --id {prId}` to get the target branch name
-   - Then fetch and switch to the PR branch: `az repos pr checkout --id {prId}`
+   - First, use `az repos pr show --id {prId} --org {orgUrl}` to get the target branch name
+   - Then fetch and switch to the PR branch: `az repos pr checkout --id {prId}` (note: checkout does NOT require `--org` as it operates on the local git repository)
    - Generate the diff: `git diff origin/{targetBranch}...HEAD`
    - **Note**: These commands will only work when executed in the same git repository as the PR.
 
@@ -103,7 +103,7 @@ Use this exact format for code links (must include full commit hash):
 https://dev.azure.com/{org}/{project}/_git/{repo}?path=/{file-path}&version=GC{full-commit-hash}&lineStart={start}&lineEnd={end}&lineStartColumn=1&lineEndColumn=1
 ```
 
-- Get full commit hash from PR details (`az repos pr show`)
+- Get full commit hash from PR details (`az repos pr show --id {prId} --org {orgUrl}`)
 - Use `lineStart` and `lineEnd` for line ranges (or just `line={number}` for a single line)
 - Include 1+ lines of context before/after the issue
 - Ensure org, project, and repo names match the PR's repository
