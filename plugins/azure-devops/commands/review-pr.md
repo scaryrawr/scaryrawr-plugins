@@ -11,7 +11,7 @@ Provide a code review for the given Azure DevOps pull request.
 
 2. **Get Context**: Identify relevant CLAUDE.md files (root and in modified directories) and get the PR diff using git commands:
    - First, use `az repos pr show --id {prId}` to get the target branch name
-   - Then fetch and checkout the PR branch: `az repos pr checkout --id {prId}`
+   - Then fetch and switch to the PR branch: `az repos pr checkout --id {prId}`
    - Generate the diff: `git diff origin/{targetBranch}...HEAD`
    - **Note**: These commands will only work when executed in the same git repository as the PR.
 
