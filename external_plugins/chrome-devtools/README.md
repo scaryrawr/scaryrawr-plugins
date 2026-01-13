@@ -41,32 +41,30 @@ Enables Claude to control Chrome/Chromium browsers for:
 
 ## Configuration
 
-The plugin connects to Chrome DevTools using environment variables with default values:
+The plugin connects to Chrome DevTools using the `CHROME_DEBUG_URL` environment variable:
 
-- `DEVTOOLS_BASE_URL`: The host address (default: `127.0.0.1`)
-- `DEVTOOLS_PORT`: The debugging port (default: `9222`)
+- `CHROME_DEBUG_URL`: The full URL to Chrome's remote debugging interface (default: `http://127.0.0.1:9222`)
 
-To use a custom host or port, set these environment variables before starting Claude Code:
+If this environment variable is not set, the plugin will use the default URL `http://127.0.0.1:9222`.
+
+To use a custom host or port, set this environment variable before starting Claude Code:
 
 **macOS/Linux:**
 
 ```bash
-export DEVTOOLS_BASE_URL=192.168.1.100
-export DEVTOOLS_PORT=9223
+export CHROME_DEBUG_URL=http://192.168.1.100:9223
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-$env:DEVTOOLS_BASE_URL="192.168.1.100"
-$env:DEVTOOLS_PORT="9223"
+$env:CHROME_DEBUG_URL="http://192.168.1.100:9223"
 ```
 
 **Windows (Command Prompt):**
 
 ```cmd
-set DEVTOOLS_BASE_URL=192.168.1.100
-set DEVTOOLS_PORT=9223
+set CHROME_DEBUG_URL=http://192.168.1.100:9223
 ```
 
 ## Specialized Agents
