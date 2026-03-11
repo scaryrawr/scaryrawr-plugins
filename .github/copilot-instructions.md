@@ -46,7 +46,12 @@ Define specialized agent behaviors. See [external_plugins/chrome-devtools/agents
 ---
 name: accessibility
 description: Web applications performance specialist...
-tools: Read, Grep, Glob, Bash, mcp__plugin_chrome-devtools_...
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - mcp__plugin_chrome-devtools_...
 ---
 ```
 

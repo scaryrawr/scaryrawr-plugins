@@ -49,7 +49,12 @@ Example from `external_plugins/chrome-devtools/agents/accessibility.md`:
 ---
 name: accessibility
 description: Web applications performance specialist for accessibility compliance...
-tools: Read, Grep, Glob, Bash, mcp__plugin_chrome-devtools_...
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - mcp__plugin_chrome-devtools_...
 ---
 ```
 
